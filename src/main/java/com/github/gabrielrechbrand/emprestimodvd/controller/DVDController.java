@@ -21,30 +21,30 @@ public class DVDController {
     private DVDRepository dvdRepository;
 
     @PostMapping
-    public ResponseEntity<DVD> createDVD(@RequestBody DVD dvd) {
-        logger.info("Creating DVD: {}", dvd);
-        DVD savedDVD = dvdRepository.save(dvd);
-        logger.info("DVD created successfully: {}", savedDVD);
-        return new ResponseEntity<>(savedDVD, HttpStatus.CREATED);
+    public ResponseEntity<DVD> saveDVD(@RequestBody DVD dvd) {
+        logger.info("Criando DVD: {}", dvd);
+        DVD dvdSalvo = dvdRepository.save(dvd);
+        logger.info("DVD criado com sucesso: {}", dvdSalvo);
+        return new ResponseEntity<>(dvdSalvo, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<DVD> getDVDById(@PathVariable UUID id) {
-        logger.info("Retrieving DVD with ID: {}", id);
+        logger.info("Recuperando DVD com ID: {}", id);
         DVD dvd = dvdRepository.findById(id).orElse(null);
         if (dvd == null) {
-            logger.info("DVD not found with ID: {}", id);
+            logger.info("DVD não encontrado com ID: {}", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        logger.info("DVD retrieved successfully: {}", dvd);
+        logger.info("DVD recuperado com sucesso: {}", dvd);
         return ResponseEntity.ok(dvd);
     }
 
     @GetMapping
     public ResponseEntity<Iterable<DVD>> getAllDVDs() {
-        logger.info("Retrieving all DVDs");
+        logger.info("Recuperando todos os DVDs");
         Iterable<DVD> dvds = dvdRepository.findAll();
-        logger.info("DVDs retrieved successfully: {}", dvds);
+        logger.info("DVDs recuperados com sucesso: {}", dvds);
         return ResponseEntity.ok(dvds);
     }
 
