@@ -1,5 +1,6 @@
 package com.github.gabrielrechbrand.emprestimodvd.model;
 
+import com.github.gabrielrechbrand.emprestimodvd.enumeration.EnumGenero;
 import jakarta.persistence.*;
 import lombok.Generated;
 import lombok.Getter;
@@ -23,10 +24,12 @@ public class DVD {
     private String sinopse;
 
     @Column
+    private EnumGenero genero;
+
     @ManyToOne
     private Pessoa diretor;
 
-    @Column
     @ManyToOne
     private Pessoa artistaPrincipal;
+
 }
