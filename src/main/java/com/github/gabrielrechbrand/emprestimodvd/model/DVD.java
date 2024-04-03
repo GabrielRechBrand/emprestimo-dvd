@@ -22,4 +22,11 @@ public class DVD {
     @Column
     private String sinopse;
 
+    @Column
+    @ManyToOne
+    private Pessoa diretor;
+
+    @Column
+    @ManyToOne
+    private Pessoa artistaPrincipal;
 }
