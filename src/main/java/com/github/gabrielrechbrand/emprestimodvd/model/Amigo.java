@@ -10,7 +10,6 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Amigo extends Pessoa {
-
     @Id
     @GeneratedValue
     private UUID id;
@@ -27,5 +26,4 @@ public class Amigo extends Pessoa {
     @OneToOne
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
-
 }
